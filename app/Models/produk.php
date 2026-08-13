@@ -4,8 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class produk extends Model
+class Produk extends Model
 {
-    // Tambahkan baris ini agar kolom database diizinkan untuk diperbarui dari luar
-    protected $fillable = ['nama', 'harga', 'stok', 'desk', 'gambar'];
+    protected $table = 'produks'; // kalau database nama tabelnya produk, pakai 'produks'
+
+    protected $fillable = [
+        'nama',
+        'harga',
+        'stok',
+        'desk',
+        'gambar',
+    ];
 }
