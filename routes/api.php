@@ -2,5 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\AuthController;
 
-Route::apiResource('produk', ProdukController::class);
+// Public routes
+Route::post('login', [AuthController::class, 'login']);
+
+// Protected routes
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::apiResource('produk', ProdukController::class);
+    Route::get('user', [AuthController::class, 'me']);
+});
